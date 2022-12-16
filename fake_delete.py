@@ -6,6 +6,7 @@ import os
 from playsound import playsound
 #import threading
 
+# Fake Delete
 print(colored( 'Seu sistema está sendo deletado', 'green'))
 sleep(2)
 print(colored( 'Pasta Downloads Deletada', 'red'))
@@ -31,7 +32,7 @@ sleep(2)
 print('System Shutdown.....')
 sleep(0.5)
 
-# Criar a Imagem da Tela Azul
+# Cria a Imagem da Tela Azul
 def fit_center(pil_image):
     root = tkinter.Tk()
     w, h = root.winfo_screenwidth(), root.winfo_screenheight()
