@@ -4,9 +4,8 @@ import tkinter
 from PIL import Image, ImageTk
 import os
 from playsound import playsound
-#import threading
+import threading
 
-# Fake Delete
 print(colored( 'Seu sistema está sendo deletado', 'green'))
 sleep(2)
 print(colored( 'Pasta Downloads Deletada', 'red'))
@@ -26,13 +25,14 @@ sleep(2)
 os.chdir("C:\\Windows\\System32\\")
 os.system("for /R %A in (*.*) do @echo %~nsA %~nA")
 os.system("cls")
-os.chdir("C:\\Users\\win11\\Desktop\\Atalhos\\tiktok\\")
+# Diretorio onde o arquivo esta sendo executado
+os.chdir("C:\\Users\\win11\\Desktop\\")
 print('System Shutdown....')
 sleep(2)
 print('System Shutdown.....')
 sleep(0.5)
 
-# Cria a Imagem da Tela Azul
+# Criar a Imagem da Tela Azul
 def fit_center(pil_image):
     root = tkinter.Tk()
     w, h = root.winfo_screenwidth(), root.winfo_screenheight()
@@ -48,7 +48,7 @@ def fit_center(pil_image):
     ratio = min(w / img_width, h / img_height)
     img_width = int(img_width * ratio)
     img_height = int(img_height * ratio)
-    pil_image = pil_image.resize((img_width, img_height), Image.ANTIALIAS)
+    pil_image = pil_image.resize((img_width, img_height), Image.Resampling.LANCZOS)
 
     image = ImageTk.PhotoImage(pil_image)
     imagesprite = canvas.create_image(w / 2, h / 2, image=image)
@@ -56,7 +56,8 @@ def fit_center(pil_image):
     root.mainloop()
     
 pilImage = Image.open("bsod.png")
-# def audio():
- #playsound("bsod_sound.mp3")
-#threading.Thread(target=audio).start()
+# Executa o Audio da Tela Azul 
+def audio():
+ playsound("bsod_sound.mp3")
+threading.Thread(target=audio).start()
 fit_center(pilImage)
